@@ -4,7 +4,8 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(request: NextRequest) {
   const status = request.nextUrl.searchParams.get("status");
 
-  let query = supabase
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let query = (supabase as any)
     .from("posts")
     .select("*")
     .order("created_at", { ascending: false });

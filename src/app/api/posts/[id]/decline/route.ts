@@ -15,7 +15,8 @@ export async function POST(
     );
   }
 
-  const { error } = await supabase
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { error } = await (supabase as any)
     .from("posts")
     .update({
       status: "declined",

@@ -7,7 +7,8 @@ export async function POST(
 ) {
   const { id } = await params;
 
-  const { error } = await supabase
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { error } = await (supabase as any)
     .from("posts")
     .update({ status: "approved", updated_at: new Date().toISOString() })
     .eq("id", id);
